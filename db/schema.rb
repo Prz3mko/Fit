@@ -17,12 +17,15 @@ ActiveRecord::Schema.define(version: 20160923201449) do
   enable_extension "plpgsql"
 
   create_table "trenings", force: :cascade do |t|
+    t.integer  "user_id"
     t.date     "date"
     t.string   "exercise"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "trenings", ["user_id"], name: "index_trenings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

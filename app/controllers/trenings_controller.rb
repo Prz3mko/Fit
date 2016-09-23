@@ -25,7 +25,8 @@ class TreningsController < ApplicationController
   # POST /trenings.json
   def create
     @trening = Trening.new(trening_params)
-
+    @trening.user_id = current_user.id
+    
     respond_to do |format|
       if @trening.save
         format.html { redirect_to @trening, notice: 'Trening was successfully created.' }
@@ -69,6 +70,6 @@ class TreningsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trening_params
-      params.require(:trening).permit(:date, :exercise, :description)
+      params.require(:trening).permit(:date, :exercise, :description ,:user_id)
     end
 end
