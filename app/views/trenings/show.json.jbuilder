@@ -1,0 +1,1 @@
+json.partial! "trenings/trening", trening: @trening
